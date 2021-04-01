@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { OrderList } from './components/OrderList';
 
 import ordersFromServer from './api/orders.json';
 import usersFromServer from './api/users.json';
@@ -15,21 +16,6 @@ const preparedOrders = ordersFromServer.map(order => ({
 
 export const App = () => (
   <div className="container">
-    {preparedOrders.map(order => (
-      <div className="ui card">
-        <div className="ui content">
-          <div className="ui description">
-            <p>
-              {`${order.title} - ${order.user.name}`}
-            </p>
-            <ul className="ui list">
-              {order.products.map(product => (
-                <li>{product.name}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    ))}
+    <OrderList orders={preparedOrders} />
   </div>
 );
